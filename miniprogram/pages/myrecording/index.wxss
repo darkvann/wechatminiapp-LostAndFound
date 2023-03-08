@@ -1,0 +1,232 @@
+/* pages/myrecording/index.wxss */
+.body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+}
+.head {
+  width: 100vw;
+  height: 12%;
+  /* border: solid black 1rpx; */
+  background-color: #83b0b3;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  overflow: hidden;
+}
+.user {
+  width: 70%;
+  height: 100%;
+  /* border: solid black 1rpx; */
+  display: flex;
+  align-items: center;
+  margin-left: 20rpx;
+  overflow: hidden;
+}
+.mpicon2 {
+  margin-right: 20rpx;
+  /* margin-left: -10rpx; */
+}
+.mpicon1 {
+  margin-right: 30rpx;
+  /* border: solid black 1rpx; */
+}
+
+#e2 {
+  display: none;
+}
+
+.ava {
+  width: 100rpx;
+  height: 100rpx;
+  border: solid white 1rpx;
+  border-radius: 50%;
+}
+.name {
+  color: white;
+  margin-left: 20rpx;
+  width: 300rpx;
+  /* border: solid rebeccapurple 1rpx; */
+  overflow: hidden;
+}
+
+.swibarlist {
+  display: flex;
+  width: 100vw;
+  height: 6%;
+  border-bottom: solid 3rpx #c6b9a9;
+  border-top: solid 3rpx #c6b9a9;
+  align-items: center;
+  justify-content: center;
+}
+.tab {
+  width: 40%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #d3c4b0;
+  font-family: 宋体;
+}
+.chosedtab {
+  width: 40%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #837869;
+  font-family: 宋体;
+}
+.main {
+  width: 100vw;
+  height: 82%;
+}
+.srl {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.doing {
+  margin-top: 40rpx;
+  width: 85%;
+  /* border: solid black 1rpx; */
+  height: 50rpx;
+  border-radius: 25rpx;
+  padding-left: 30rpx;
+  color: white;
+  /* background-color: #b8e4dd; */
+  background: linear-gradient(90deg, #cbefe9 40%, #b8e4dd 60%);
+  display: flex;
+  align-items: center;
+}
+.done {
+  margin-top: 70rpx;
+  width: 85%;
+  /* border: solid black 1rpx; */
+  height: 50rpx;
+  border-radius: 25rpx;
+  padding-left: 30rpx;
+  color: white;
+  /* background-color: #b8e4dd; */
+  background: linear-gradient(90deg, #cbefe9 40%, #b8e4dd 60%);
+  display: flex;
+  align-items: center;
+}
+.container {
+  width: 85%;
+  /* border: solid black 1rpx; */
+  height: 180rpx;
+  margin-top: 10rpx;
+  margin-bottom: 20rpx;
+  overflow: hidden;
+
+  /* 此处有修改 */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  /* 此处有修改 */
+}
+
+.delete {
+  width: 50rpx;
+  height: 50rpx;
+  align-self: center;
+  display: none;
+  margin-left: 20rpx;
+  margin-right: 10rpx;
+}
+
+.nav {
+  width: 100%;
+  height: 100%;
+  /* border: solid red 1rpx; */
+  display: flex;
+  align-items: center;
+}
+.posterava_box {
+  max-width: 29%;
+  min-width: 29%;
+  height: 100%;
+  /* border: solid red 1rpx; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.line {
+  height: 70%;
+  width: 1rpx;
+  border-left: solid 4rpx #cbefe9;
+}
+.info {
+  padding-left: 20rpx;
+  width: 70%;
+  height: 100%;
+  /* border: solid rebeccapurple 1rpx; */
+}
+.posterava {
+  min-width: 120rpx;
+  max-width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  border: solid #cbefe9 1prx;
+}
+.notgot {
+  width: 200rpx;
+  height: 40rpx;
+  /* border: solid black 1rpx; */
+  background-color: #cbefe9;
+  border-radius: 15rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+.got {
+  width: 200rpx;
+  height: 40rpx;
+  /* border: solid black 1rpx; */
+  background-color: #71beb2;
+  border-radius: 15rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+.is_wattingconfirm {
+  height: 30%;
+  width: 100%;
+  border-bottom: solid #cbefe9 3rpx;
+  font-size: 30rpx;
+  display: flex;
+  align-items: flex-end;
+  color: #8fc5c1;
+  font-family: 宋体;
+}
+.target {
+  height: 30%;
+  width: 100%;
+  border-bottom: solid #cbefe9 3rpx;
+  font-size: 30rpx;
+  display: flex;
+  align-items: flex-end;
+  color: #8fc5c1;
+  font-family: 宋体;
+}
+.title {
+  height: 30%;
+  width: 100%;
+  border-bottom: solid #cbefe9 3rpx;
+  font-size: 30rpx;
+  display: flex;
+  align-items: flex-end;
+  color: #8fc5c1;
+  font-family: 宋体;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

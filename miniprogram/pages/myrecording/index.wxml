@@ -1,0 +1,146 @@
+<!-- pages/myrecording/index.wxml -->
+<view class="body">
+    <view class="head">
+        <view class="user">
+            <mp-icon class="mpicon2" icon='back' color="white" size="{{18}}" bindtap="close"></mp-icon>
+            <view class="avabox">
+                <image src="{{user.ava}}" mode="aspectFill" class="ava" />
+            </view>
+            <view class="name">{{user.name}}</view>
+        </view>
+        <view class="icon">
+            <mp-icon icon="pencil" id="e1" style="{{e1style}}" class="mpicon1" color="white" size="{{28}}" bind:tap="CGeditmissions" />
+            <mp-icon icon="done" id="e2" style="{{e2style}}" class="mpicon1" color="white" size="{{28}}" bind:tap="CGeditmissions" />
+        </view>
+    </view>
+    <view class="swibarlist">
+        <view data-index="{{0}}" class="{{currentTab==0?'chosedtab':'tab'}}" bind:tap="clicktab">
+            失物
+        </view>
+        <view data-index="{{1}}" class="{{currentTab==1?'chosedtab':'tab'}}" bind:tap="clicktab">
+            拾物
+        </view>
+        <view data-index="{{2}}" class="{{currentTab==2?'chosedtab':'tab'}}" bindtap="clicktab">
+            我承接的
+        </view>
+    </view>
+    <swiper current="{{currentTab}}" bindchange="slidechange" class="main" autoplay="{{false}}" enable-flex="{{true}}">
+        <swiper-item>
+            <scroll-view scroll-y="{{true}}" enable-flex="{{true}}" class="srl">
+                <view class="doing">未完成的</view>
+                <view wx:for="{{loselist_doing}}" wx:key="key" wx:for-index="index" class="container">
+                    <navigator class="nav" open-type="navigate" url="{{'../detail/index?id='+item._id+'&lostThing='+1+'&Uni='+item.Uni}}">
+                        <view class="posterava_box">
+                            <image src="{{item.receive_image==''?'cloud://yjx23332-4gzt6er385ca8136.796a-yjx23332-4gzt6er385ca8136-1305849876/my.png':item.receive_image}}" mode="aspectFill" class="posterava" />
+                        </view>
+                        <view class="line"></view>
+                        <view class="info">
+                            <view class="is_wattingconfirm">
+                                状态：
+                                <view class="{{item.isfound?'got':'notgot'}}">
+                                    #{{item.status==0?'待承接':'待确认'}}
+                                </view>
+                            </view>
+                            <view class="target">类型标签: {{item.category}}</view>
+                            <view class="title">失物信息: {{item.little_title}}</view>
+                        </view>
+                    </navigator>
+                    <mp-icon class="delete" icon="close2" data-index="{{index}}" data-isdone="{{0}}" bind:tap="delete" style="{{e2style}}" color="#71beb2" size="{{24}}"></mp-icon>
+                </view>
+                <view class="done">已找回的物品</view>
+                <view wx:for="{{loselist_done}}" wx:key="key" class="container">
+                    <view class="nav" wx:if="{{item.status == '1'}}">
+                        <!-- <navigator class="nav" open-type="navigate" url="{{'../detail/index?id='+item._id+'&lostThing='+1}}"> -->
+                        <view class="posterava_box">
+                            <image src="{{item.receive_image==''?'cloud://yjx23332-4gzt6er385ca8136.796a-yjx23332-4gzt6er385ca8136-1305849876/my.png':item.receive_image}}" mode="aspectFill" class="posterava" />
+                        </view>
+                        <view class="line"></view>
+                        <view class="info">
+                            <view class="is_wattingconfirm">帮助者: {{item.receive_nickname}}</view>
+                            <view class="target">类型标签: {{item.category}}</view>
+                            <view class="title">失物信息: {{item.little_title}}</view>
+                        </view>
+                        <!-- </navigator> -->
+                        <mp-icon class="delete" icon="close2" data-index="{{index}}" data-isdone="{{1}}" bind:tap="delete" style="{{e2style}}" color="#71beb2" size="{{28}}"></mp-icon>
+                    </view>
+                </view>
+            </scroll-view>
+        </swiper-item>
+        <swiper-item>
+            <scroll-view scroll-y="{{true}}" enable-flex="{{true}}" class="srl">
+                <view class="doing">未完成的</view>
+                <view wx:for="{{foundlist_doing}}" wx:key="key" class="container">
+                    <navigator class="nav" open-type="navigate" url="{{'../detail/index?id='+item._id+'&lostThing='+0}}">
+                        <view class="posterava_box">
+                            <image src="{{item.receive_image==''?'cloud://yjx23332-4gzt6er385ca8136.796a-yjx23332-4gzt6er385ca8136-1305849876/my.png':item.receive_image}}" mode="aspectFill" class="posterava" />
+                        </view>
+                        <view class="line"></view>
+                        <view class="info">
+                            <view class="is_wattingconfirm">
+                                状态：
+                                <view class="{{item.isfound?'got':'notgot'}}">
+                                    #{{item.status==0?'待承接':'待确认'}}
+                                </view>
+                            </view>
+                            <view class="target">类型标签: {{item.category}}</view>
+                            <view class="title">失物信息: {{item.little_title}}</view>
+                        </view>
+                    </navigator>
+                    <mp-icon class="delete" icon="close2" data-isdone="{{0}}" data-index="{{index}}" bind:tap="delete" style="{{e2style}}" color="#71beb2" size="{{28}}"></mp-icon>
+                </view>
+                <view class="done">已交付失主的</view>
+                <view wx:for="{{foundlist_done}}" wx:key="key" class="container">
+                    <view class="nav" wx:if="{{item.status == '1'}}">
+                        <!-- <navigator class="nav" open-type="navigate" url="{{'../detail/index?id='+item._id+'&lostThing='+0}}"> -->
+                        <view class="posterava_box">
+                            <image src="{{item.receive_image==''?'cloud://yjx23332-dt833.796a-yjx23332-dt833-1304089423/my.png':item.receive_image}}" mode="aspectFill" class="posterava" />
+                        </view>
+                        <view class="line"></view>
+                        <view class="info">
+                            <view class="is_wattingconfirm">加分：+1</view>
+                            <view class="target">类型标签: {{item.category}}</view>
+                            <view class="title">失物信息: {{item.little_title}}</view>
+                        </view>
+                        <!-- </navigator> -->
+                        <mp-icon class="delete" data-index="{{index}}" data-isdone="{{1}}" icon="close2" bind:tap="delete" style="{{e2style}}" color="#71beb2" size="{{28}}"></mp-icon>
+                    </view>
+                </view>
+            </scroll-view>
+        </swiper-item>
+        <swiper-item>
+            <scroll-view scroll-y="{{true}}" enable-flex="{{true}}" class="srl">
+                <view class="doing">承接拾物</view>
+                <view wx:for="{{myreceivedf}}" wx:key="key" wx:for-index="{{index}}" class="container">
+                    <navigator class="nav" open-type="navigate" url="{{'../detail/index?id='+item._id+'&lostThing='+0}}">
+                        <view class="posterava_box">
+                            <image src="{{item.receive_image==''?'cloud://yjx23332-dt833.796a-yjx23332-dt833-1304089423/my.png':item.submit_image}}" mode="aspectFill" class="posterava" />
+                        </view>
+                        <view class="line"></view>
+                        <view class="info">
+                            <view class="is_wattingconfirm">{{item.submit_nickname}}</view>
+                            <view class="target">类型标签: {{item.category}}</view>
+                            <view class="title">失物信息: {{item.little_title}}</view>
+                        </view>
+                    </navigator>
+                    <!-- <view class="cancelbtn" bind:tap="cancelundertaking" data-index="{{index}}"style="width:160rpx;height:70rpc;align-self:center;font-size:30rpx;border:solid #b8e4dd 1rpx;border-radius:10rpx;margin-left:10rpx;margin-top:10rpx;color:white;background-color:#b8e4dd;">
+                        取消承接
+                    </view> -->
+                </view>
+                <view class="doing">承接失物</view>
+                <view wx:for="{{myreceivedl}}" wx:key="key" wx:for-index="{{index}}" class="container">
+                    <navigator class="nav" open-type="navigate" url="{{'../detail/index?id='+item._id+'&lostThing='+1}}">
+                        <view class="posterava_box">
+                            <image src="{{item.receive_image==''?'cloud://yjx23332-dt833.796a-yjx23332-dt833-1304089423/my.png':item.submit_image}}" mode="aspectFill" class="posterava" />
+                        </view>
+                        <view class="line"></view>
+                        <view class="info">
+                            <view class="is_wattingconfirm">{{item.submit_nickname}}</view>
+                            <view class="target">类型标签: {{item.category}}</view>
+                            <view class="title">失物信息: {{item.little_title}}</view>
+                        </view>
+                    </navigator>
+                </view>
+            </scroll-view>
+        </swiper-item>
+    </swiper>
+</view>

@@ -1,0 +1,24 @@
+<!-- pages/scoredetail/index.wxml -->
+<view class="body">
+    <view class="head">
+        <view class="back">
+            <mp-icon icon="back" color="white" size="{{10}}" />
+            <view id="ha" bind:tap="Back">返回</view>
+        </view>
+        <view class="score">{{score}}分</view>
+        <view class="time">数据更新时间：{{time}}</view>
+    </view>
+    <view class="main">
+        <scroll-view class="scroll" scroll-y="{{true}}">
+            <view wx:for="{{getScoreDetails}}" wx:key="key" class="details">
+                <view class="title">{{item.little_title}}</view>
+                <view class="timeAndScore">
+                    <view class="gotTime">
+                        {{item.Time}}
+                    </view>
+                    <view class="gotScore">+1分</view>
+                </view>
+            </view>
+        </scroll-view>
+    </view>
+</view>

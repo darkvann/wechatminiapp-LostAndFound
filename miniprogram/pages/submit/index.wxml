@@ -1,0 +1,104 @@
+<view class="body">
+  <view class="head_bg"></view>
+  <view class="bottom_bg">
+    <view bind:tap="formsubmit" style="width:150rpx;height:70%;background-color:#fdeecd;border-radius:20rpx;display:flex;align-items:center;justify-content:center;color:#767676;box-shadow:0 0 7rpx 5rpx #fdeecd,0 0 10rpx 10rpx #fdeecd;font-size:36rpx;">
+      提交
+    </view>
+  </view>
+</view>
+<view class="floatview">
+  <view class="head_fl">
+    <view class="flodtop" style="{{isfold}}">
+      <view style="display:flex;align-items:center;" bindtap="cancel">
+        <mp-icon icon="back" color="white" size="{{16}}" style="margin-left:20rpx;"></mp-icon>
+        <view style="color:white;font-size:42rpx;margin-left:10rpx;font-family:宋体;">返回</view>
+      </view>
+      <view style="color:white;font-size:46rpx;font-family:宋体;">{{Uni}}</view>
+      <image src="{{avatar}}" mode="aspectFill" style="width:90rpx;height:90rpx;border-radius:50%;border:solid orange 1rpx;margin-right:70rpx;" />
+    </view>
+    <view class="abscard">
+      <view class="attributes">
+        属性:
+        <view class="{{lostThing==1?'on':'off'}}" data-index="{{0}}" bind:tap="changeabs">失物</view>
+        <view class="{{lostThing==1?'off':'on'}}" data-index="{{1}}" bind:tap="changeabs">拾物</view>
+      </view>
+      <picker mode="date" class="date" enable-flex="{{true}}" bindchange="changedate">
+        <view style="display:flex;align-items:center;justify-content:space-around;width:100%;height:100%;margin-top:15rpx;">
+          时间：
+          <view>{{year}}年</view>
+          <view>{{month}}月</view>
+          <view>{{day}}日</view>
+        </view>
+      </picker>
+      <picker mode="selector" range="{{targetlist}}" class="target" bindchange="changetarget">
+        <view style="display:flex;flex-direction:row;align-items:center;">
+          标签：
+          <view style="margin-left:100rpx;width:200rpx;height:50rpx;border-radius:20rpx;background-color:#fdeecd;display:flex;align-items:center;justify-content:center;">
+            {{target!=''?target:'点击选择'}}
+          </view>
+        </view>
+      </picker>
+    </view>
+  </view>
+  <scroll-view scroll-y="{{true}}" enable-flex="{{true}}" class="main_fl" bindscrolltoupper="foldup" bindscrolltolower="unfoldown">
+    <view class="container firstctn">
+      <view class="icon" inp>
+        <mp-icon icon="text" color="#c9baa1" size="{{36}}"></mp-icon>
+        <text style="color:#c9baa1;font-size:34rpx;">标题</text>
+      </view>
+      <textarea placeholder="白色耳机" class="area" bindinput="inptitle">{{littletitle}}</textarea>
+    </view>
+    <view class="container">
+      <view class="icon">
+        <mp-icon icon="location" color="#c9baa1" size="{{36}}"></mp-icon>
+        <text style="color:#c9baa1;font-size:34rpx;">地点</text>
+      </view>
+      <textarea placeholder="8教302" class="area" bindinput="getAddress">{{address}}</textarea>
+    </view>
+    <view class="container">
+      <view class="icon">
+        <mp-icon icon="note" color="#c9baa1" size="{{36}}"></mp-icon>
+        <text style="color:#c9baa1;font-size:34rpx;">详细信息</text>
+      </view>
+      <textarea placeholder="厂商，特征等详尽描述" class="area" bindinput="getDescription">{{description}}</textarea>
+    </view>
+    <view class="container">
+      <view class="icon">
+        <mp-icon icon="photo-wall" color="#c9baa1" size="{{36}}"></mp-icon>
+        <text style="color:#c9baa1;font-size:34rpx;">图片</text>
+      </view>
+      <scroll-view scroll-x="{{true}}" enable-flex="{{true}}" class="area" style="display:flex;align-items:center;">
+        <view id="refer" style="width:95%;height:90%;border-radius:20rpx;display:flex;flex-direction:row;margin-top:10rpx;align-items:center;">
+          <view wx:for="{{chooseImageUrl}}" wx:for-index="index" style="z-index:{{index}};{{index!=0?'left:-'+ 60*index +'rpx;':''}}" wx:key="key" class='chooseImageWrap'>
+            <image style="{{rewidth}}" class='chooseImage' src='{{item}}' mode="aspectFill"></image>
+            <!-- <text class='chooseImageClose' data-index="{{index}}" bindtap='Close'>X</text> -->
+            <image class="chooseImageClose" data-index="{{index}}" bindtap='Close' src="cloud://yjx23332-4gzt6er385ca8136.796a-yjx23332-4gzt6er385ca8136-1305849876/关闭.png" />
+          </view>
+          <view wx:if='{{chooseImageUrl.length<9}}' class="ax" style="left:-{{chooseImageUrl.length*60}}rpx;z-index:{{chooseImageUrl.length+1}};cursor: pointer;{{rewidth}}" bindtap='paizhao'>
+            <image class="img" style="{{rewidth}}opacity:0.6;border-radius:10rpx;" src="cloud://yjx23332-4gzt6er385ca8136.796a-yjx23332-4gzt6er385ca8136-1305849876/add.png"></image>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+    <view class="container">
+      <view class="icon">
+        <mp-icon icon="contacts" color="#c9baa1" size="{{36}}"></mp-icon>
+        <text style="color:#c9baa1;font-size:34rpx;">联系方式\n至少一个</text>
+      </view>
+      <view class="area contact">
+        <view style="width:100%;height:30%;display:flex;flex-wrap:nowrap;border-bottom:solid #fdeecd 3rpx;justify-content:space-around;">
+          <input class="qq" data-index='{{0}}' placeholder-style="color:#bababa" placeholder="QQ:" value="{{contact[0]}}" bindinput="contactInput" />
+          <view class="btn" data-index='{{0}}' bind:tap="autoFill">自动填入</view>
+        </view>
+        <view style="width:100%;height:30%;display:flex;flex-wrap:nowrap;border-bottom:solid #fdeecd 3rpx;justify-content:space-around;">
+          <input class="weixin" data-index='{{1}}' placeholder-style="color:#bababa" placeholder="微信:" value="{{contact[1]}}" bindinput="contactInput" />
+          <view class="btn" data-index='{{1}}' bind:tap="autoFill">自动填入</view>
+        </view>
+        <view style="width:100%;height:30%;display:flex;flex-wrap:nowrap;justify-content:space-around;">
+          <input class="phone" data-index='{{2}}' placeholder-style="color:#bababa" placeholder="电话：" value="{{contact[2]}}" bindinput="contactInput" />
+          <view class="btn" data-index='{{2}}' bind:tap="autoFill">自动填入</view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>

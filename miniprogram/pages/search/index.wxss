@@ -1,0 +1,233 @@
+page {
+  background-color: #fdf5e0;
+}
+.body {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+}
+.willhide {
+  width: 100%;
+}
+.weui-search {
+  width: 100%;
+  height: 4vh;
+  padding: 10px;
+  padding-top: 10rpx;
+  background-color: #fdf5e0;
+  color: #969696;
+  display: flex;
+  flex-direction: row;
+  /* border: solid black 1rpx; */
+}
+.weui-search-bar {
+  width: 40%;
+  height: 40rpx;
+  margin-top: 25rpx;
+  margin-bottom: 10rpx;
+  padding: 10rpx 10rpx;
+  background-color: #fdf5e0;
+  color: #969696;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* border: solid black 1rpx; */
+}
+.search_bar_chosed {
+  width: 40%;
+  height: 40rpx;
+  margin-top: 25rpx;
+  margin-bottom: 10rpx;
+  padding: 10rpx 10rpx;
+  background-color: #fdf5e0;
+  color: #fadc90;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.weui-search-bar-title {
+  width: 30%;
+  height: 40rpx;
+  color: #767676;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* border: solid black 1rpx; */
+}
+.weui-icon-search_in-box {
+  height: 50rpx;
+  width: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* border: solid black 1rpx; */
+}
+
+.weui-search-bar__box {
+  width: 80%;
+  height: 60rpx;
+  display: flex;
+  flex-direction: row;
+  border: solid #fae3a8 3rpx;
+  border-radius: 25rpx;
+
+  display: flex;
+  align-items: center;
+}
+.weui-search-bar__input {
+  height: 50rpx;
+  width: 87%;
+  /* border: solid black 1rpx; */
+}
+.weui-search-bar__cancel-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60rpx;
+  width: 15%;
+  /* border: solid black 1rpx; */
+}
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+/* 搜索结果 */
+.serach_result {
+  height: 92vh;
+  width: 100%;
+}
+.scroll {
+  width: 100%;
+  height: 100%;
+}
+.left {
+  float: left;
+  width: 50%;
+  margin: 0;
+  padding: 0;
+  /* border: solid black 1rpx; */
+}
+.right {
+  float: right;
+  width: 50%;
+  margin: 0;
+  padding: 0;
+  /* border: solid black 1rpx; */
+}
+.container1 {
+  height: 470rpx;
+  /* margin-left: 20rpx; */
+  margin-top: 20rpx;
+  margin-right: 15rpx;
+  margin-left: 15rpx;
+  background-color: #ecf8e1;
+
+  border: #969696 3rpx solid;
+}
+.container2 {
+  height: 390rpx;
+  /* margin-left: 20rpx; */
+  margin-top: 20rpx;
+  margin-right: 15rpx;
+  margin-left: 15rpx;
+  background-color: #fefaef;
+
+  border: #969696 solid 3rpx;
+}
+.pic_lf {
+  width: 80%;
+  height: 60%;
+  /* border: solid black 1rpx; */
+  margin-top: 20rpx;
+}
+.pic_rt {
+  width: 80%;
+  height: 50%;
+  /* border: solid black 1rpx; */
+  margin-top: 20rpx;
+}
+.navigator {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.littletitle_lf {
+  width: 90%;
+  height: 20%;
+  /* border: #969696 solid 1rpx; */
+  margin-top: 10rpx;
+  color: #c6b8a9;
+}
+.littletitle_rt {
+  width: 90%;
+  height: 26%;
+  /* border: #969696 solid 1rpx; */
+  margin-top: 10rpx;
+  color: #c6b8a9;
+}
+.posterinfo_lf {
+  width: 100%;
+  height: 10%;
+  /* border: #969696 solid 1rpx; */
+  margin-top: 10rpx;
+  /* font-size: small; */
+  color: #c6b9a9;
+  display: flex;
+  justify-content: space-between;
+}
+.posterinfo_rt {
+  width: 100%;
+  height: 12%;
+  /* border: #969696 solid 1rpx; */
+  margin-top: 10rpx;
+  /* font-size: small; */
+  color: #c6b9a9;
+  display: flex;
+  justify-content: space-between;
+}
+.miniava {
+  max-width: 40rpx;
+  min-width: 40rpx;
+  height: 40rpx;
+  border-radius: 50%;
+  /* margin-left: 10rpx; */
+}
+.posterinfoctn {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  /* border: red solid 1rpx; */
+  width: 50%;
+  height: 100%;
+}
+.postertime {
+  font-size: 24rpx;
+  /* border: solid yellow 1rpx; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10rpx;
+}
+.posername {
+  height: 100%;
+  font-size: 26rpx;
+  /* margin-bottom: 20rpx; */
+  /* border: solid yellow 1rpx; */
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-left: 5rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  padding-left: 10rpx;
+}

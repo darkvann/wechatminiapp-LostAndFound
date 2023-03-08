@@ -1,0 +1,231 @@
+.body {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  position: absolute;
+  flex-direction: row;
+  flex-wrap: wrap;
+  z-index: -1;
+  background-color: white;
+}
+.head_bg {
+  width: 100%;
+  height: 25vh;
+  background: linear-gradient(130deg, #fdcf15, #fce16a 50%, #f7e7a2);
+  box-shadow: 1rpx 0rpx 5rpx 5rpx #fce16a;
+}
+.bottom_bg {
+  width: 100%;
+  height: 7vh;
+  align-self: flex-end;
+  border-top: solid #dacbb2 1rpx;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.floatview {
+  width: 100vw;
+  height: 85vh;
+  position: absolute;
+  z-index: 1;
+  top: 5vh;
+  /* border: solid red 1rpx; */
+}
+.head_fl {
+  width: 100%;
+  height: 38%;
+  /* border: solid yellow 1rpx; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  z-index: 6;
+  overflow: hidden;
+}
+.main_fl {
+  width: 103%;
+  height: 78.5%;
+  /* border: solid greenyellow 1rpx; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
+  position: absolute;
+  z-index: 5;
+  top: 25%;
+}
+.flodtop {
+  width: 100%;
+  height: 27%;
+  /* border: solid black 1rpx; */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 50rpx;
+  /* transition: all 0.6s; */
+}
+.abscard {
+  width: 80%;
+  height: 76%;
+  border-radius: 60rpx;
+  /* border: solid gray 1rpx; */
+  background-color: white;
+  box-shadow: 3rpx 4rpx 2rpx 3rpx rgb(124, 124, 124, 0.2);
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10rpx;
+  /* position: absolute; */
+  /* z-index: 999;
+  top: 29%; */
+}
+.attributes {
+  width: 100%;
+  height: 30%;
+  /* border: solid black 1rpx; */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  color: #dacbb2;
+  font-size: larger;
+}
+.on {
+  background-color: #fdeecd;
+  width: 150rpx;
+  height: 50rpx;
+  border-radius: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.off {
+  width: 150rpx;
+  border-radius: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.date {
+  width: 100%;
+  height: 30%;
+  /* border: solid black 1rpx; */
+  color: #dacbb2;
+  font-size: larger;
+  /* display: flex;
+  align-items: center; */
+}
+.target {
+  width: 100%;
+  height: 30%;
+  color: #dacbb2;
+  font-size: larger;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-left: 40rpx;
+}
+.container {
+  width: 78%;
+  max-height: 200rpx;
+  min-height: 200rpx;
+  /* border: solid black 1rpx; */
+  border-radius: 30rpx;
+  background-color: #fdeecd;
+  box-shadow: 0rpx 0rpx 5rpx 5rpx #fdeecd,
+    5rpx 5rpx 5rpx 3rpx rgb(184, 184, 184, 0.6);
+  margin-top: 50rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.firstctn {
+  margin-top: 180rpx;
+}
+.icon {
+  width: 30%;
+  height: 100%;
+  /* border: solid black 1rpx; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.area {
+  width: 60%;
+  height: 80%;
+  /* margin: auto; */
+  background-color: white;
+  margin-right: 20rpx;
+  border-radius: 30rpx;
+  padding-left: 10rpx;
+  overflow: hidden;
+  color: #c9baa1;
+}
+/* 图片卷 */
+.chooseImage {
+  height: 100%;
+  border-radius: 10rpx;
+  margin: 0;
+}
+.chooseImageClose {
+  width: 45rpx;
+  height: 45rpx;
+  z-index: 999;
+  position: absolute;
+  font-size: 35rpx;
+  left: 0rpx;
+}
+.chooseImageWrap {
+  height: 100%;
+  position: relative;
+  border-radius: 10rpx;
+}
+.ax {
+  height: 100%;
+  position: relative;
+  /* background-color: aqua; */
+}
+.img {
+  height: 100%;
+  /* background-color: aqua; */
+}
+
+/* 联系方式栏 */
+.contact {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.btn {
+  min-width: 140rpx;
+  max-width: 140rpx;
+  height: 100%;
+  border-radius: 10rpx;
+  background-color: #fce16a;
+  color: white;
+  font-size: 26rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.weixin {
+  color: #969696;
+  font-size: 26rpx;
+  display: flex;
+  align-items: flex-start;
+}
+.qq {
+  color: #969696;
+  font-size: 26rpx;
+  display: flex;
+  align-items: flex-start;
+}
+.phone {
+  color: #969696;
+  font-size: 26rpx;
+  display: flex;
+  align-items: flex-start;
+}

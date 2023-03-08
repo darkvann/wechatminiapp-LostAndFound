@@ -1,0 +1,82 @@
+<!-- pages/home/index.wxml -->
+<view class="body">
+    <view class="flower f1">
+        <view class="largepetal l1"></view>
+        <view class="largepetal l2"></view>
+        <view class="largepetal l3"></view>
+        <view class="largepetal l4"></view>
+        <view class="largepetal l5"></view>
+        <view class="largepetal l6"></view>
+        <view class="littlepetal m1"></view>
+        <view class="littlepetal m2"></view>
+        <view class="littlepetal m3"></view>
+        <view class="littlepetal m4"></view>
+        <view class="littlepetal m5"></view>
+        <view class="littlepetal m6"></view>
+        <view class="core c1"></view>
+        <view class="core c2"></view>
+        <view class="core c3"></view>
+        <view class="core c4"></view>
+        <view class="core c5"></view>
+        <view class="core c6"></view>
+        </view>
+    <view class="flower f2">
+        <view class="largepetal l1"></view>
+        <view class="largepetal l2"></view>
+        <view class="largepetal l3"></view>
+        <view class="largepetal l4"></view>
+        <view class="largepetal l5"></view>
+        <view class="largepetal l6"></view>
+        <view class="littlepetal m1"></view>
+        <view class="littlepetal m2"></view>
+        <view class="littlepetal m3"></view>
+        <view class="littlepetal m4"></view>
+        <view class="littlepetal m5"></view>
+        <view class="littlepetal m6"></view>
+        <view class="core c1"></view>
+        <view class="core c2"></view>
+        <view class="core c3"></view>
+        <view class="core c4"></view>
+        <view class="core c5"></view>
+        <view class="core c6"></view>
+    </view>
+    <view class="flower f3">
+        <view class="largepetal l1"></view>
+        <view class="largepetal l2"></view>
+        <view class="largepetal l3"></view>
+        <view class="largepetal l4"></view>
+        <view class="largepetal l5"></view>
+        <view class="largepetal l6"></view>
+        <view class="littlepetal m1"></view>
+        <view class="littlepetal m2"></view>
+        <view class="littlepetal m3"></view>
+        <view class="littlepetal m4"></view>
+        <view class="littlepetal m5"></view>
+        <view class="littlepetal m6"></view>
+        <view class="core c1"></view>
+        <view class="core c2"></view>
+        <view class="core c3"></view>
+        <view class="core c4"></view>
+        <view class="core c5"></view>
+        <view class="core c6"></view>
+    </view>
+</view>
+<view class="table">
+    <view class="title">
+        <text class="slogan" decode="{{true}}">  <text style="font-size:23px;">欢迎使用\n</text>  &nbsp;“原来在此”\n <text  decode="{{true}}" style="font-size:20px;">&nbsp; &nbsp;——失物招领平台:\n</text></text>
+    </view>
+    <view class="features_container">
+        <view class="loginbtn">
+            <view class="prompt" hidden="{{islogined}}" bind:tap="login">点击登录</view>
+            <image src="{{userImage}}" mode="aspectFill" class="ava" hidden="{{!islogined}}" />
+        </view>
+        <view class="features schoolcontext">
+            <input bindfocus="onfocus" bindconfirm="cnlfocus" style="{{inputfocus}}" value="{{Uni}}" bindblur="cnlfocus" class="inputer" bindinput="getData"></input>
+            <label style="{{focusstyle}}">学校</label>
+            <picker class="chooser"  bindchange="changeschool" range="{{schoollist}}">
+                <view class="chooseicon">></view>
+            </picker>
+        </view>
+        <view class="confirmbtn" bind:tap="confirm" hover="{{true}}">确认</view>
+    </view>
+</view>

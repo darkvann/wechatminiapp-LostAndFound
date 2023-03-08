@@ -1,0 +1,55 @@
+<view class="body">
+    <view class="head">
+        <view class="userinfo">
+            <view class="avatar">
+                <image id="ava" src="{{user.avatar}}" mode="aspectFill" />
+            </view>
+            <view class="name">{{user.vrtname}}</view>
+        </view>
+        <view class="pics">
+            <swiper class="swi" autoplay="{{false}}" circular="{{false}}" indicator-dots="{{true}}" indicator-active-color="#fab3cd" indicator-color="#f1f1ef">
+                <swiper-item class="swiitem" wx:for="{{user.pics}}" wx:key="*this">
+                    <image id="swiimg" src="{{item}}" mode="aspectFill" />
+                </swiper-item>
+            </swiper>
+        </view>
+    </view>
+    <view class="middle">
+        <view class="discribe">
+            <view id="titl">{{Title}}</view>
+            <scroll-view scroll-y="{{true}}" id="detail">
+                物品描述:
+                <text>\n</text>
+                {{user.txt}}
+            </scroll-view>
+            <view id="contact">
+                <text>
+                    QQ : {{user.contact.qq}}\nWX : {{user.contact.weixin}}\n电话 : {{user.contact.phone}}
+                </text>
+            </view>
+        </view>
+    </view>
+    <view class="bottom">
+        <view class="targets">#{{user.target}}</view>
+        <view wx:if='{{onwer}}'>
+			<view wx:if='{{!receive_openid}}'>
+				<view class="call">暂无人联系</view>
+			</view>
+			<view wx:else>
+				<view class="call layout check" bind:tap="deny">不是对方</view>
+				<view class="call check" bind:tap="define">是对方</view>
+			</view>
+		</view>
+		<view wx:else>
+            <view wx:if='{{!receive_openid}}'>
+                <view class="call check" bind:tap="callOwner">承接</view>
+            </view>
+            <view wx:elif='{{receiver}}'>
+                <view  class="call check" bind:tap='cancelHold'>取消承接</view>
+            </view>
+            <view wx:else>
+                <view  class="call">已被承接</view>
+            </view>
+		</view>
+    </view>
+</view>

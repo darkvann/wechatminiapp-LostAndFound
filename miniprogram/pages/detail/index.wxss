@@ -1,0 +1,130 @@
+.body {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.head {
+  height: 40vh;
+  width: 100vw;
+  /* border: solid black 1rpx; */
+}
+.userinfo {
+  /* border: solid black 1rpx; */
+  height: 10vh;
+  /* background-color: #dacbb2; */
+  background: linear-gradient(215deg, #f0dec0 40%, #fdd288 60%);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: #c7c3bd 1rpx solid;
+}
+.avatar {
+  margin-left: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.name {
+  /* border: solid black 1rpx; */
+  width: 250rpx;
+  height: 60rpx;
+  margin-left: 20rpx;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.swi {
+  width: 100%;
+  height: 30vh;
+  /* border: solid rebeccapurple 1rpx; */
+}
+#swiimg {
+  width: 100%;
+  height: 85%;
+  border-bottom: #bda987 7rpx solid;
+}
+.discribe {
+  height: 52vh;
+  /* border: solid black 1rpx; */
+  display: flex;
+  flex-direction: column;
+}
+#titl {
+  width: 100%;
+  height: 60rpx;
+  /* border: solid black 1rpx; */
+  color: #a4998b;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-left: 20rpx;
+  font-size: 36rpx;
+}
+#detail {
+  width: 90%;
+  height: 60%;
+  /* border: #a4998b solid 1rpx; */
+  margin-left: 20rpx;
+  color: #c6b8a9;
+  line-height: 56rpx;
+}
+#contact {
+  width: 90%;
+  height: auto;
+  /* border: solid black 1rpx; */
+  color: #c6b8a9;
+  line-height: 56rpx;
+  font-size: 34rpx;
+  margin-left: 20rpx;
+}
+.bottom {
+  height: 8vh;
+  /* border: solid red 1rpx; */
+  background-color: rgb(248, 252, 255);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.targets {
+  background-color: #f1c40f;
+  color: white;
+  width: 23%;
+  margin-bottom: 10rpx;
+  margin-left: 20rpx;
+  border-radius: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#ava {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50rpx;
+}
+.call {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 200rpx;
+  background-color: #d8ccb7;
+  border-radius: 25rpx;
+  margin-bottom: 20rpx;
+  margin-right: 30rpx;
+  color: white;
+  height: 60rpx;
+}
+
+.layout {
+  float: right;
+  margin-left: 20rpx;
+}
+
+.check {
+  background-color: #f8bca0f8;
+}

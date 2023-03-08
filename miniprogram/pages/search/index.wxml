@@ -1,0 +1,133 @@
+<view class="body">
+    <view style="height:4vh;width:100%;display:flex;flex-direction:row;align-items:center;justify-content:space-between">
+        <view style="color:#fadc90;margin-left:25rpx;">当前搜索范围:{{Uni}}</view>
+        <view style="color:#fadc90;margin-right:25rpx">当前搜索状态：{{lostThing==1?"失物":"拾物"}}</view>
+    </view>
+    <view class="weui-search">
+        <!-- 搜索框 -->
+        <view class="weui-search-bar__box">
+            <icon class="weui-icon-search_in-box" type="search" size="14" bind:tap="{{chosedTarget==''?'find_data':'find_Tag_and_data'}}"></icon>
+            <input type="text" class="weui-search-bar__input" placeholder="请输入搜索内容" value="{{search_data}}" bindconfirm="{{chosedTarget==''?'find_data':'find_Tag_and_data'}}" bindinput="get_data" />
+        </view>
+        <!-- 搜索按钮,调用搜索查询方法 -->
+        <view class="weui-search-bar__cancel-btn" bindtap='cancel'>{{buttonCont}}</view>
+    </view>
+    <view class="willhide" hidden="{{hiddenif}}">
+        <view class="weui-search-bar-title">搜索标签</view>
+        <view class="container">
+            <view class="{{chosed[0]?'search_bar_chosed':'weui-search-bar'}}" data-index="{{0}}" bind:tap="chooseTarget">
+                卡类
+            </view>
+            <view class="{{chosed[1]?'search_bar_chosed':'weui-search-bar'}}" data-index="{{1}}" bind:tap="chooseTarget">
+                饰品
+            </view>
+            <view class="{{chosed[2]?'search_bar_chosed':'weui-search-bar'}}" data-index="{{2}}" bind:tap="chooseTarget">
+                电子产品
+            </view>
+            <view class="{{chosed[3]?'search_bar_chosed':'weui-search-bar'}}" data-index="{{3}}" bind:tap="chooseTarget">
+                文具
+            </view>
+            <view class="{{chosed[4]?'search_bar_chosed':'weui-search-bar'}}" data-index="{{4}}" bind:tap="chooseTarget">
+                伞类
+            </view>
+            <view class="{{chosed[5]?'search_bar_chosed':'weui-search-bar'}}" data-index="{{5}}" bind:tap="chooseTarget">
+                包类
+            </view>
+            <view class="{{chosed[6]?'search_bar_chosed':'weui-search-bar'}}" data-index="{{6}}" bind:tap="chooseTarget">
+                体育用具
+            </view>
+            <view class="{{chosed[7]?'search_bar_chosed':'weui-search-bar'}}" data-index="{{7}}" bind:tap="chooseTarget">
+                玩偶
+            </view>
+            <view class="{{chosed[8]?'search_bar_chosed':'weui-search-bar'}}" data-index="{{8}}" bind:tap="chooseTarget">
+                衣服
+            </view>
+            <view class="{{chosed[9]?'search_bar_chosed':'weui-search-bar'}}" data-index="{{9}}" bind:tap="chooseTarget">
+                钥匙
+            </view>
+            <view class="{{chosed[10]?'search_bar_chosed':'weui-search-bar'}}" data-index="{{10}}" bind:tap="chooseTarget">
+                书籍
+            </view>
+            <view class="{{chosed[11]?'search_bar_chosed':'weui-search-bar'}}" data-index="{{11}}" bind:tap="chooseTarget">
+                其他
+            </view>
+        </view>
+    </view>
+    <view class="serach_result" hidden="{{!hiddenif}}">
+        <scroll-view scroll-y="{{true}}" refresher-enabled="{{true}}" refresher-threshold="{{100}}" refresher-default-style="black" refresher-background="white" refresher-triggered="{{trigger1}}" enable-flex="{{true}}" class="scroll" bindrefresherrefresh='onScroollRefreshF' bindscrolltolower="refreshF">
+            <view wx:if="{{lostThing == 0}}">
+            <view class="left">
+                <view wx:for="{{listL}}" wx:key="index" class="{{index%2==0?'container1':'container2'}}">
+                    <navigator open-type="navigate" url="{{'../detail/index?id='+item._id+'&lostThing='+0}}" class="navigator">
+                        <image class="{{index%2==0?'pic_lf':'pic_rt'}}" src="{{item.fileID[0]}}" mode="aspectFill" />
+                        <view class="{{index%2==0?'littletitle_lf':'littletitle_rt'}}">
+                            {{item.place+"|"+item.little_title}}
+                        </view>
+                        <view class="{{index%2==0?'posterinfo_lf':'posterinfo_rt'}}">
+                            <view class="posterinfoctn">
+                                <image class="miniava" src="{{item.submit_image}}" mode="aspectFill" />
+                                <view class="posername">{{item.submit_nickname}}</view>
+                            </view>
+                            <text class="postertime">{{item.Time}}</text>
+                        </view>
+                    </navigator>
+                </view>
+            </view>
+            <view class="right">
+                <view wx:for="{{listR}}" wx:key="index" class="{{index%2==1?'container1':'container2'}}">
+                    <navigator open-type="navigate" url="{{'../detail/index?id='+item._id+'&lostThing='+0}}" class="navigator">
+                        <image class="{{index%2==1?'pic_lf':'pic_rt'}}" src="{{item.fileID[0]}}" mode="aspectFill" />
+                        <view class="{{index%2==1?'littletitle_lf':'littletitle_rt'}}">
+                            {{item.place+"|"+item.little_title}}
+                        </view>
+                        <view class="{{index%2==1?'posterinfo_lf':'posterinfo_rt'}}">
+                            <view class="posterinfoctn">
+                                <image class="miniava" src="{{item.submit_image}}" mode="aspectFill" />
+                                <view class="posername">{{item.submit_nickname}}</view>
+                            </view>
+                            <text class="postertime">{{item.Time}}</text>
+                        </view>
+                    </navigator>
+                </view>
+            </view>
+        </view>
+        <view wx:else>
+            <view class="left">
+                <view wx:for="{{listL}}" wx:key="index" class="{{index%2==0?'container1':'container2'}}">
+                    <navigator open-type="navigate" url="{{'../detail/index?id='+item._id+'&lostThing='+1}}" class="navigator">
+                        <image class="{{index%2==0?'pic_lf':'pic_rt'}}" src="{{item.fileID[0]}}" mode="aspectFill" />
+                        <view class="{{index%2==0?'littletitle_lf':'littletitle_rt'}}">
+                            {{item.place+"|"+item.little_title}}
+                        </view>
+                        <view class="{{index%2==0?'posterinfo_lf':'posterinfo_rt'}}">
+                            <view class="posterinfoctn">
+                                <image class="miniava" src="{{item.submit_image}}" mode="aspectFill" />
+                                <view class="posername">{{item.submit_nickname}}</view>
+                            </view>
+                            <text class="postertime">{{item.Time}}</text>
+                        </view>
+                    </navigator>
+                </view>
+            </view>
+            <view class="right">
+                <view wx:for="{{listR}}" wx:key="index" class="{{index%2==1?'container1':'container2'}}">
+                    <navigator open-type="navigate" url="{{'../detail/index?id='+item._id+'&lostThing='+1}}" class="navigator">
+                        <image class="{{index%2==1?'pic_lf':'pic_rt'}}" src="{{item.fileID[0]}}" mode="aspectFill" />
+                        <view class="{{index%2==1?'littletitle_lf':'littletitle_rt'}}">
+                            {{item.place+"|"+item.little_title}}
+                        </view>
+                        <view class="{{index%2==1?'posterinfo_lf':'posterinfo_rt'}}">
+                            <view class="posterinfoctn">
+                                <image class="miniava" src="{{item.submit_image}}" mode="aspectFill" />
+                                <view class="posername">{{item.submit_nickname}}</view>
+                            </view>
+                            <text class="postertime">{{item.Time}}</text>
+                        </view>
+                    </navigator>
+                </view>
+            </view>
+        </view>
+        </scroll-view>
+
+    </view>
+</view>

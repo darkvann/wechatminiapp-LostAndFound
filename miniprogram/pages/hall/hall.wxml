@@ -1,0 +1,141 @@
+<view class="body">
+    <view class="slide">
+        <view class="page-content">
+            <view class="wc slidehead">
+                <image class="ava" src='{{userinfo.avatar}}' mode="aspectFill" bindtap="getUserProfile" />
+                <view class="slidheadtxt">
+                    <view class="slidheadtxt1" bindtap="getUserProfile">
+                        <text>昵称: {{userinfo.nickname}}\n</text>
+                    </view>
+                    <view class="slidheadtxt2">
+                        <picker class="special" mode="selector" bindchange="changeschool" range="{{schoolrange}}" value="{{userindo.school}}">
+                            {{userinfo.school}}
+                            <mp-icon icon="pencil" size="{{20}}" color="#c6b8a9"></mp-icon>
+                        </picker>
+                    </view>
+                </view>
+            </view>
+            <view class="score" data-index="{{0}}" bind:tap="navto">
+                <mp-icon class="five-pointed-star" icon="star" color="rgb(226, 205, 14)" size="24"></mp-icon>
+                <text id="scoretxt">个人积分: {{userinfo.score}}</text>
+            </view>
+            <view class="wc" data-index="{{1}}" bind:tap="navto">
+                <view class="txticon">失</view>
+                <text class="btntxt">我的失物></text>
+            </view>
+            <view class="wc" data-index="{{2}}" bind:tap="navto">
+                <view class="txticon">拾</view>
+                <text class="btntxt">我的拾物></text>
+            </view>
+            <view class="wc" data-index="{{3}}" bind:tap="navto">
+                <view class="txticon">接</view>
+                <text class="btntxt">我的承接></text>
+            </view>
+            <view class="wc" data-index="{{4}}" bind:tap="navto">
+                <mp-icon class="txticon" icon="pencil" color="white"></mp-icon>
+                <text class="btntxt">个人信息></text>
+            </view>
+            <view class="wc" data-index="{{5}}" bind:tap="navto">
+                <mp-icon class="txticon" icon="note" color="white"></mp-icon>
+                <text class="btntxt">基本信息></text>
+            </view>
+        </view>
+    </view>
+    <view bindtouchmove="tap_drag" bindtouchend="tap_end" bindtouchstart="tap_start" class="mainpart {{open?'[c-state,cover]':''}}">
+        <view class="head">
+            <image src="{{userinfo.avatar}}" mode="aspectFill" class="ava" hidden="{{open}}" bind:tap="tap_ch" />
+            <view class="headline">
+                <view class="swiper-tab-list {{currentTab==0?'on':''}}" data-current="{{0}}" bind:tap="clickchange">
+                    拾得之物
+                </view>
+                <view class="swiper-tab-list {{currentTab==1?'on':''}}" data-current="{{1}}" bind:tap="clickchange">
+                    丢失之物
+                </view>
+            </view>
+            <icon type="search" size="35" class="search_button" bind:tap="nav2search"></icon>
+        </view>
+        <view class="main">
+            <swiper current="{{currentTab}}" class="swi" duration="300" bindchange="swipetochange">
+                <swiper-item class="swiitem">
+                    <scroll-view scroll-y="{{true}}" refresher-enabled="{{true}}" refresher-threshold="{{100}}" refresher-default-style="black" refresher-background="white" refresher-triggered="{{trigger1}}" enable-flex="{{true}}" class="scroll" bindrefresherrefresh='onScroollRefreshF' bindscrolltolower="refreshF">
+                        <view class="left">
+                            <view wx:for="{{found_informations_left}}" wx:key="index" class="{{index%2==0?'container1':'container2'}}">
+                                <navigator open-type="navigate" url="{{'../detail/index?id='+item._id+'&lostThing='+0}}" class="navigator">
+                                    <image class="{{index%2==0?'pic_lf':'pic_rt'}}" src="{{item.fileID[0]}}" mode="aspectFill" />
+                                    <view class="{{index%2==0?'littletitle_lf':'littletitle_rt'}}">
+                                        {{item.place+"|"+item.little_title}}
+                                    </view>
+                                    <view class="{{index%2==0?'posterinfo_lf':'posterinfo_rt'}}">
+                                        <view class="posterinfoctn">
+                                            <image class="miniava" src="{{item.submit_image}}" mode="aspectFill" />
+                                            <view class="posername">{{item.submit_nickname}}</view>
+                                        </view>
+                                        <text class="postertime">{{item.Time}}</text>
+                                    </view>
+                                </navigator>
+                            </view>
+                        </view>
+                        <view class="right">
+                            <view wx:for="{{found_informations_right}}" wx:key="index" class="{{index%2==1?'container1':'container2'}}">
+                                <navigator open-type="navigate" url="{{'../detail/index?id='+item._id+'&lostThing='+0}}" class="navigator">
+                                    <image class="{{index%2==1?'pic_lf':'pic_rt'}}" src="{{item.fileID[0]}}" mode="aspectFill" />
+                                    <view class="{{index%2==1?'littletitle_lf':'littletitle_rt'}}">
+                                        {{item.place+"|"+item.little_title}}
+                                    </view>
+                                    <view class="{{index%2==1?'posterinfo_lf':'posterinfo_rt'}}">
+                                        <view class="posterinfoctn">
+                                            <image class="miniava" src="{{item.submit_image}}" mode="aspectFill" />
+                                            <view class="posername">{{item.submit_nickname}}</view>
+                                        </view>
+                                        <text class="postertime">{{item.Time}}</text>
+                                    </view>
+                                </navigator>
+                            </view>
+                        </view>
+                    </scroll-view>
+                </swiper-item>
+                <swiper-item class="swiitem">
+                    <scroll-view scroll-y="{{true}}" refresher-enabled="{{true}}" refresher-threshold="{{100}}" refresher-default-style="black" refresher-background="white" refresher-triggered="{{trigger2}}" enable-flex="{{true}}" enable-flec="{{true}}" class="scroll" bindrefresherrefresh='onScroollRefreshL' bindscrolltolower="refreshL">
+                        <view class="left">
+                            <view wx:for="{{lost_informations_left}}" wx:key="index" class="{{index%2==0?'container1':'container2'}}">
+                                <navigator open-type="navigate" url="{{'../detail/index?id='+item._id+'&lostThing='+1}}" class="navigator">
+                                    <image class="{{index%2==0?'pic_lf':'pic_rt'}}" src="{{item.fileID[0]}}" mode="aspectFill" />
+                                    <view class="{{index%2==0?'littletitle_lf':'littletitle_rt'}}">
+                                        {{item.place+"|"+item.little_title}}
+                                    </view>
+                                    <view class="{{index%2==0?'posterinfo_lf':'posterinfo_rt'}}">
+                                        <view class="posterinfoctn">
+                                            <image class="miniava" src="{{item.submit_image}}" mode="aspectFill" />
+                                            <view class="posername">{{item.submit_nickname}}</view>
+                                        </view>
+                                        <text class="postertime">{{item.Time}}</text>
+                                    </view>
+                                </navigator>
+                            </view>
+                        </view>
+                        <view class="right">
+                            <view wx:for="{{lost_informations_right}}" wx:key="index" class="{{index%2==1?'container1':'container2'}}">
+                                <navigator open-type="navigateTo" url="{{'../detail/index?id='+item._id+'&lostThing='+1}}" class="navigator">
+                                    <image class="{{index%2==1?'pic_lf':'pic_rt'}}" src="{{item.fileID[0]}}" mode="aspectFill" />
+                                    <view class="{{index%2==1?'littletitle_lf':'littletitle_rt'}}">
+                                        {{item.place+"|"+item.little_title}}
+                                    </view>
+                                    <view class="{{index%2==1?'posterinfo_lf':'posterinfo_rt'}}">
+                                        <view class="posterinfoctn">
+                                            <image class="miniava" src="{{item.submit_image}}" mode="aspectFill" />
+                                            <view class="posername">{{item.submit_nickname}}</view>
+                                        </view>
+                                        <text class="postertime">{{item.Time}}</text>
+                                    </view>
+                                </navigator>
+                            </view>
+                        </view>
+                    </scroll-view>
+                </swiper-item>
+            </swiper>
+        </view>
+        <view class="bottom">
+            <mp-icon icon="add" color="white" size="{{35}}" class="addbtn" bind:tap="navTosubmit"></mp-icon>
+        </view>
+    </view>
+</view>

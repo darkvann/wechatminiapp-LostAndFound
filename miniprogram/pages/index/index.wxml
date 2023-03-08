@@ -1,0 +1,43 @@
+<view class="body">
+    <view class="weui-search">
+        <!-- 搜索框 -->
+        <view class="weui-search-bar__box">
+            <icon class="weui-icon-search_in-box" type="search" size="14" bind:tap="startSearch"></icon>
+            <input type="text" class="weui-search-bar__input" placeholder="请输入搜索内容" value="{{content}}" bindinput="newInput" />
+        </view>
+        <!-- 搜索按钮,调用搜索查询方法 -->
+        <view class="weui-search-bar__cancel-btn" bindtap='removeInput'>{{buttonCont}}</view>
+    </view>
+    <view class="willhide" hidden="{{hiddenif}}">
+        <view class="weui-search-bar-title">搜索标签</view>
+        <view class="container">
+            <view class="{{chosed[0]?'search_bar_chosed':'weui-search-bar'}}" data-index="{{0}}" bind:tap="chooseTarget">
+                卡包
+            </view>
+            <view class="{{chosed[1]?'search_bar_chosed':'weui-search-bar'}}" data-index="{{1}}" bind:tap="chooseTarget">
+                伞
+            </view>
+            <view class="{{chosed[2]?'search_bar_chosed':'weui-search-bar'}}" data-index="{{2}}" bind:tap="chooseTarget">
+                电子设备
+            </view>
+            <view class="{{chosed[3]?'search_bar_chosed':'weui-search-bar'}}" data-index="{{3}}" bind:tap="chooseTarget">
+                衣服饰品
+            </view>
+            <view class="{{chosed[4]?'search_bar_chosed':'weui-search-bar'}}" data-index="{{4}}" bind:tap="chooseTarget">
+                钥匙
+            </view>
+            <view class="{{chosed[5]?'search_bar_chosed':'weui-search-bar'}}" data-index="{{5}}" bind:tap="chooseTarget">
+                体育用具
+            </view>
+            <view class="{{chosed[6]?'search_bar_chosed':'weui-search-bar'}}" data-index="{{6}}" bind:tap="chooseTarget">
+                书籍文具
+            </view>
+            <view class="{{chosed[7]?'search_bar_chosed':'weui-search-bar'}}" data-index="{{7}}" bind:tap="chooseTarget">
+                其他
+            </view>
+        </view>
+    </view>
+    <view class="serach_result" hidden="{{!hiddenif}}">
+        <view class="results">这里是搜索结果</view>
+    </view>
+</view>

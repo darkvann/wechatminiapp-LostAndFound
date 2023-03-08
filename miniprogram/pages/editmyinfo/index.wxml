@@ -1,0 +1,59 @@
+<!-- pages/editmyinfo/index.wxml -->
+<view class="body">
+    <view class="back">
+        <view style="display:flex;align-items:center;" bindtap="close">
+            <mp-icon icon="back" color="white" size="{{12}}" />
+            返回
+        </view>
+        <view style="width:100rpx;height:50rpx;display:flex;align-items:center;" bind:tap="updateuserinfo">
+            完成
+        </view>
+    </view>
+    <view class="head">
+        <view class="ava" id="ava">
+            <image src="{{userinfo.avatar}}" style="{{positionstyle}}" class="pic" id="pi"></image>
+           <!-- <mp-icon class="edit" icon="pencil" color="white" size="{{14}}" bind:tap="changeAvatar" />-->
+        </view>
+        <view class="rightpart">
+            <view class="container">
+                <view class="name" hidden="{{ischangingname}}">{{userinfo.nickname}}</view>
+                <!--<input class="nameinput" value="{{userinfo.nickname}}" focus="{{ischangingname}}" hidden="{{!ischangingname}}" bindinput="cgname" />-->
+               <!-- <i class="iconfont icon-xiugai" id="cgname" bind:tap="clickcgname" />-->
+            </view>
+            <view class="score">个人积分: {{userinfo.score}}</view>
+        </view>
+    </view>
+    <view class="middle">
+        <view class="grids">
+            <mp-icon icon="location" color="#969696" size="{{29}}" />
+            <view class="infomation" hidden="{{editmode[0]}}">{{userinfo.school}}</view>
+            <input type="text" value="{{userinfo.school}}" focus="{{editmode[0]}}" class="infomation input" data-index="{{0}}" bindinput="newinput" hidden="{{!editmode[0]}}" />
+            <i data-index="{{0}}" class="iconfont icon-xiugai pencilicon" hidden="{{editmode[0]}}" bind:tap="changeEditMode" />
+            <!-- <i data-index="{{0}}" class="iconfont icon-wancheng pencilicon" hidden="{{!editmode[0]}}" bind:tap="changeEditMode" /> -->
+        </view>
+        <view class="grids">
+            <i class="iconfont icon-qq" />
+            <view class="infomation" hidden="{{editmode[1]}}">{{userinfo.QQ}}</view>
+            <input focus="{{editmode[1]}}" value="{{userinfo.QQ}}" class="infomation input" data-index="{{1}}" bindinput="newinput" hidden="{{!editmode[1]}}" />
+            <i data-index="{{1}}" class="pencilicon iconfont icon-xiugai" hidden="{{editmode[1]}}" bind:tap="changeEditMode" />
+        </view>
+        <view class="grids">
+            <i class="iconfont icon-weixin" />
+            <view class="infomation" hidden="{{editmode[2]}}">{{userinfo.Weixin}}</view>
+            <input focus="{{editmode[2]}}" value="{{userinfo.Weixin}}" class="infomation input" data-index="{{2}}" bindinput="newinput" hidden="{{!editmode[2]}}" />
+            <i data-index="{{2}}" class="pencilicon icon-xiugai iconfont" hidden="{{editmode[2]}}" bind:tap="changeEditMode" />
+        </view>
+        <view class="grids">
+            <mp-icon icon="cellphone" color="#969696" size="{{28}}" />
+            <view class="infomation" hidden="{{editmode[3]}}">{{userinfo.phone}}</view>
+            <input focus="{{editmode[3]}}" value="{{userinfo.phone}}" class="infomation input" data-index="{{3}}" bindinput="newinput" hidden="{{!editmode[3]}}" />
+            <i data-index="{{3}}" class="pencilicon iconfont icon-xiugai" hidden="{{editmode[3]}}" bind:tap="changeEditMode" />
+        </view>
+    </view>
+    <view class="bottom" bind:tap="feedback">
+        <view class="feedback">
+            <mp-icon icon="email" color="white" size="{{32}}"></mp-icon>
+            意见反馈
+        </view>
+    </view>
+</view>
